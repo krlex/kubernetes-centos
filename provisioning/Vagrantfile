@@ -4,6 +4,9 @@ Vagrant.require_version ">= 2.2.7"
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
 require File.dirname(__FILE__)+"/dependency_manager"
+require 'yaml'
+masters= YAML.load_file('masters.yml')
+workers= YAML.load_file('nodes.yml')
 # Automatically install required vagrant plugins
 check_plugins ["vagrant-reload", "vagrant-vbguest", "vagrant-timezone", "vagrant-disksize"]
 

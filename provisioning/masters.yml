@@ -1,0 +1,15 @@
+---
+
+  - name: master
+    hostname: kmaster.exmaple.com
+    box: centos/7
+    box_ip: 100.10.10.100
+    memory: 1024
+    cpu: 2
+
+#  - name: master
+#    hostname: kmaster.exmaple.com
+#    box: centos/7
+#    box_ip: 100.10.10.100
+#    memory: 1024
+#    cpu: 2

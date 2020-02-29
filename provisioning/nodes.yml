@@ -1,0 +1,16 @@
+---
+
+  - name: worker
+    hostname: kworker.exmaple.com
+    box: centos/7
+    box_ip: 100.10.10.10
+    memory: 1024
+    cpu: 2
+    provision:
+
+#  - name: worker
+#    hostname: kworker.exmaple.com
+#    box: centos/7
+#    box_ip: 100.10.10.10
+#    memory: 1024
+#    cpu: 2
