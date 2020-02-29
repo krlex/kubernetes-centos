@@ -6,7 +6,9 @@
     box_ip: 100.10.10.10
     memory: 1024
     cpu: 2
-    provision:
+    worker-provision: vm-worker/install.sh
+    helm-provision: helm/install.sh
+    addons-provision: addons/install.sh
 
 #  - name: worker
 #    hostname: kworker.exmaple.com

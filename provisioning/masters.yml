@@ -6,6 +6,10 @@
     box_ip: 100.10.10.100
     memory: 1024
     cpu: 2
+    prerequisites: vm-prerequisites/install.sh
+    master-provision: vm-master/install.sh
+    helm-provision: helm/install.sh
+    helm-tiller: helm/install_tiller.sh
 
 #  - name: master
 #    hostname: kmaster.exmaple.com
@@ -13,3 +17,5 @@
 #    box_ip: 100.10.10.100
 #    memory: 1024
 #    cpu: 2
+#   prerequistites: vm-prerequistites/install.sh
+
