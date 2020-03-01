@@ -25,27 +25,28 @@ Vagrant.configure(API_VERSION) do |config|
       vb.memory = master["memory"]
       vb.cpus = master["cpu"]
     end
-    kmaster.vm.provision "shell", path: master["master-provision"],:args => [master["box_ip"]]
+    kmaster.vm.provision "shell", path: master["master-provision"],:args =>  ["100.10.10.100"]
     kmaster.vm.provision "shell", path: master["helm-provision"]
     kmaster.vm.provision "shell", path: master["helm-tiller"]
   end
   end
 
-  NodeCount = 1
+  #NodeCount = 1
   # Worker
-  (1..NodeCount).each do |i|
-    config.vm.define "kworker#{i}" do |workernode|
-      workernode.vm.box = "centos/7"
-      workernode.vm.hostname = "kworker#{i}.example.com"
-      workernode.vm.network "private_network", ip: "100.10.10.10#{i}"
+  #(1..NodeCount).each do |i|
+  workers.each do | worker |
+    config.vm.define worker["name"] do |workernode|
+      workernode.vm.box = worker["box"]
+      workernode.vm.hostname = worker["hostname"]
+      workernode.vm.network "private_network", ip: worker["box_ip"]
       workernode.vm.provider "virtualbox" do |vb|
-        vb.name = "kworker#{i}"
-        vb.memory = 1024
-        vb.cpus = 2
+        vb.name = worker["name"]
+        vb.memory = worker["memory"]
+        vb.cpus = worker["cpu"]
       end
-      workernode.vm.provision "shell", path: "vm-worker/install.sh",:args => ["kubeadmin","kmaster.example.com"]
-      workernode.vm.provision "shell", path: "helm/install.sh"
-      workernode.vm.provision "shell", path: "addons/install.sh",:args => ["100.10.10.100"]
+      workernode.vm.provision "shell", path: worker["worker-provision"],:args => ["kubeadmin","kmaster.example.com"]
+      workernode.vm.provision "shell", path: worker["helm-provision"]
+      workernode.vm.provision "shell", path: worker["addons-provision"],:args => ["100.10.10.100"]
     end
   end
 end

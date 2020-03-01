@@ -3,7 +3,7 @@
   - name: worker
     hostname: kworker.exmaple.com
     box: centos/7
-    box_ip: 100.10.10.10
+    box_ip: 100.10.10.101
     memory: 1024
     cpu: 2
     worker-provision: vm-worker/install.sh
@@ -13,6 +13,9 @@
 #  - name: worker
 #    hostname: kworker.exmaple.com
 #    box: centos/7
-#    box_ip: 100.10.10.10
+#    box_ip: 100.10.10.101
 #    memory: 1024
 #    cpu: 2
+#    worker-provision: vm-worker/install.sh
+#    helm-provision: helm/install.sh
+#    addons-provision: addons/install.sh
