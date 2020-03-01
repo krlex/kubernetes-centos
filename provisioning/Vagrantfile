@@ -25,7 +25,7 @@ Vagrant.configure(API_VERSION) do |config|
       vb.memory = master["memory"]
       vb.cpus = master["cpu"]
     end
-    kmaster.vm.provision "shell", path: master["master-provision"],:args => master["box_ip"]
+    kmaster.vm.provision "shell", path: master["master-provision"],:args => [master["box_ip"]]
     kmaster.vm.provision "shell", path: master["helm-provision"]
     kmaster.vm.provision "shell", path: master["helm-tiller"]
   end
