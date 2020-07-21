@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "vm-prerequisites/install.sh",:args => ["kubeadmin"]
   # Kubernetes Master Node
   config.vm.define "kmaster" do |kmaster|
-    kmaster.vm.box = "centos/7"
+    kmaster.vm.box = "centos/8"
     #kmaster.disksize.size = '200GB'
     kmaster.vm.hostname = "kmaster.example.com"
     kmaster.vm.network "private_network", ip: "100.10.10.100"
@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
   # Kubernetes Worker Nodes
   (1..NodeCount).each do |i|
     config.vm.define "kworker#{i}" do |workernode|
-      workernode.vm.box = "centos/7"
+      workernode.vm.box = "centos/8"
       workernode.vm.hostname = "kworker#{i}.example.com"
       workernode.vm.network "private_network", ip: "100.10.10.10#{i}"
       workernode.vm.provider "virtualbox" do |v|
