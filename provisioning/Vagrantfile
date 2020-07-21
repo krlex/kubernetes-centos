@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-Vagrant.require_version ">= 2.2.7"
+Vagrant.require_version ">= 2.2.9"
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
 require File.dirname(__FILE__)+"/dependency_manager"
